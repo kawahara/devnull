@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sample Apps</title>
+    <link rel="stylesheet" href="/bootstrap-3.0.3/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div ng-app="devnullApp">
+      <div ng-controller="postsCntl">
+        <form ng-submit="submit()">
+          Body: <input type="text" ng-model="post.body">
+          <input type="submit">
+        </form>
+        <ul>
+          <li ng-repeat="post in posts">
+            {{post.body}} <button ng-click="delete(post)">Delete</button>
+            <ul>
+              <li ng-repeat="reply in post.replies">
+                {{reply.body}}
+                <button ng-click="deleteReply(post, reply)">Delete</button>
+              </li>
+              <li>
+                <form ng-submit="reply(post)">
+                  <input type="text" ng-model="post.newreply.body">
+                  <input type="submit">
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="/jquery-1.10.2.min.js"></script>
+    <!--
+    <script src="/bootstrap-3.0.3/js/bootstrap.min.js"></script>
+    -->
+    <script src="/angular-1.2.6/angular.min.js"></script>
+    <script src="/angular-1.2.6/angular-resource.min.js"></script>
+    <script src="/devnull.js"></script>
+  </body>
+</html>
+
