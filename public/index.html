@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <title>Sample Apps</title>
     <link rel="stylesheet" href="/bootstrap-3.0.3/css/bootstrap.min.css" />
+    <style>
+      .container {
+        padding-top: 70px;
+      }
+    </style>
   </head>
   <body>
     <div ng-app="devnullApp">
-      <div ng-controller="postsCntl">
+      <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="controller">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">/dev/null</a>
+          </div>
+        </div>
+      </div>
+      <div class="container" ng-controller="postsCntl">
         <form ng-submit="submit()">
-          Body: <input type="text" ng-model="post.body">
+          <input type="text" ng-model="post.body">
           <input type="submit">
         </form>
         <ul>
@@ -33,9 +51,7 @@
     </div>
 
     <script src="/jquery-1.10.2.min.js"></script>
-    <!--
     <script src="/bootstrap-3.0.3/js/bootstrap.min.js"></script>
-    -->
     <script src="/angular-1.2.6/angular.min.js"></script>
     <script src="/angular-1.2.6/angular-resource.min.js"></script>
     <script src="/devnull.js"></script>

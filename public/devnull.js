@@ -8,6 +8,7 @@ postsServices.factory('Post', ['$resource',
     });
   }
 ]);
+
 postsServices.factory('Reply', ['$resource',
   function($resource) {
     return $resource('api/posts/:postId/reply/:id', {}, {
@@ -48,7 +49,6 @@ devnullApp.controller('postsCntl', ['$scope','Post','Reply',
 
     $scope.deleteReply = function(post, reply) {
       var r = new Reply(reply);
-      console.log(r);
       r.$remove({postId: post._id, id: r._id}, function() {
         for (var i = 0; post.replies.length > i; i++) {
           if (post.replies[i]._id === r._id) {
